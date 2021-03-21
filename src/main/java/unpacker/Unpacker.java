@@ -31,7 +31,7 @@ public class Unpacker {
         if (!brackets.isEmpty()) {
             throw new IllegalArgumentException("Неверная расстановка скобок");
         }
-        if (Pattern.matches(".*[^\\d]\\Q[\\E.*", inpString)) {
+        if (Pattern.matches(".*[^\\d]\\Q[\\E.*|\\[.*", inpString)) {
             throw new IllegalArgumentException("Перед скобкой должно стоять число");
         }
         if (Pattern.matches(".*[0-9]([a-zA-Z]|\\Q]\\E).*|.*[0-9]", inpString)) {
@@ -40,9 +40,7 @@ public class Unpacker {
         if (Pattern.matches(".*\\Q[]\\E.*", inpString)) {
             throw new IllegalArgumentException("Пустые скобки");
         }
-        if (Pattern.matches(".*[^\\d]\\Q[\\E.*|\\[.*", inpString)) {
-            throw new IllegalArgumentException("Перед скобкой должно стоять число");
-        }
+
 
         this.inpString = inpString;
         this.outString = inpString;
